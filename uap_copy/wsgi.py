@@ -1,5 +1,5 @@
 """
-WSGI config for uap_cse project.
+WSGI config for uap_copy project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'uap_cse.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'uap_copy.settings')
 
 application = get_wsgi_application()

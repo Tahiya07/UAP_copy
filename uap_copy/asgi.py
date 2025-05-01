@@ -1,5 +1,6 @@
 """
-ASGI config for uap_cse project.
+ASGI config for uap_copy
+ project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +12,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'uap_cse.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'uap_copy.settings')
 
 application = get_asgi_application()
