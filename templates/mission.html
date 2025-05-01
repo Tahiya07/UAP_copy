@@ -1,9 +1,9 @@
-<!-- curriculum.html -->
+<!-- mission.html -->
 {% extends 'base.html' %}
 {% load static %}
 
 {% block head %}
-    <title>Curriculum | CSE - UAP</title>
+    <title>Mission | CSE - UAP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,31 +13,14 @@
             color: #333;
         }
 
-        h1, h2, h3 {
+        h1 {
             text-align: center;
             color: #8B0000;  /* Dark red color for heading text */
-            background-color: #ADD8E6; /* Light blue background */
+            background-color: #FFB6C1; /* Light pink background */
+            font-size: 3em;  /* Larger font size */
             padding: 10px;  /* Add some padding around the text */
             border-radius: 5px;  /* Slightly round the corners */
-        }
-
-        h1 {
-            font-size: 2.5em;
             margin-top: 50px;
-        }
-
-        h2 {
-            margin-top: 30px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #21a9af;
-            padding-bottom: 5px;
-            color: #184e8e;
-        }
-
-        h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            color: #007b5e;
         }
 
         .pdf-container {
@@ -91,18 +74,26 @@
     </style>
 {% endblock %}
 
-{% block content %}
-    <h1>Curriculum</h1>
 
-    {% if curriculums %}
-        {% for curriculum in curriculums %}
+
+<!-- DON'T CHANGE THE CODE-->
+<!-- DON'T CHANGE THE CODE-->
+<!-- DON'T CHANGE THE CODE-->
+<!-- IT WORKS I DON'T KNOW HOW -->
+
+
+{% block content %}
+    <h1>Mission</h1>
+
+    {% if missions %}
+        {% for mission in missions %}
             <div class="pdf-container">
-                <h3>{{ curriculum.title }}</h3>
-                <p>PDF URL: <a href="{{ curriculum.pdf_file.url }}" target="_blank">{{ curriculum.pdf_file.url }}</a></p>
-                <embed src="{{ curriculum.pdf_file.url }}" type="application/pdf" width="100%" height="600px" />
+                <h3>{{ mission.title }}</h3>
+                <p>PDF URL: <a href="{{ mission.pdf_file.url }}" target="_blank">{{ mission.pdf_file.url }}</a></p>
+                <embed src="{{ mission.pdf_file.url }}" type="application/pdf" width="100%" height="600px" />
             </div>
         {% endfor %}
     {% else %}
-        <p class="no-results">No curriculum available.</p>
+        <p class="no-results">No mission documents available.</p>
     {% endif %}
 {% endblock %}

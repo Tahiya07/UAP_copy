@@ -27,7 +27,6 @@ urlpatterns = [
     path('graduate/', views.graduate, name='graduate'),
     path('tuition/', views.tuition, name='tuition'),
     path('why_cse/', views.why_cse, name='why_cse'),
-    path('host/', views.host, name='host'),
     path('clubs/', views.clubs, name='clubs'),
     path('gallery/', views.gallery, name='gallery'),
     path('aca/',include('academics.urls')),

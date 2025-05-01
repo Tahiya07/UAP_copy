@@ -1,70 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/routine.css' %}">
-    <link rel="stylesheet" href="{% static 'css/global.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="{% static 'css/global.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap">
 {% endblock %}
 
 {% block content %}
-
 <div class="banner-global">
     <h2 class="gradient-text-global">Routine</h2>
 </div>
-    <form method="get">
-        <label>Select Routine:</label>
-        <div id="routine-items">
-            <div class="circle" onclick="selectRoutine(this, '1-1')">1-1</div>
-            <div class="circle" onclick="selectRoutine(this, '1-2')">1-2</div>
-            <div class="circle" onclick="selectRoutine(this, '2-1')">2-1</div>
-            <div class="circle" onclick="selectRoutine(this, '2-2')">2-2</div>
-            <div class="circle" onclick="selectRoutine(this, '3-1')">3-1</div>
-            <div class="circle" onclick="selectRoutine(this, '3-2')">3-2</div>
-            <div class="circle" onclick="selectRoutine(this, '4-1')">4-1</div>
-            <div class="circle" onclick="selectRoutine(this, '4-2')">4-2</div>
-        </div>
 
-        <label>Select Section:</label>
-        <div id="sections">
-            <div class="circle" onclick="selectSection(this, 'A')">A</div>
-            <div class="circle" onclick="selectSection(this, 'B')">B</div>
-            <div class="circle" onclick="selectSection(this, 'C')">C</div>
-            <div class="circle" onclick="selectSection(this, 'D')">D</div>
-            <div class="circle" onclick="selectSection(this, 'E')">E</div>
-        </div>
+<!-- Form to filter routine and section -->
+<form method="get">
+    <label>Select Routine:</label>
+    <div id="routine-items">
+        <div class="circle" onclick="selectRoutine(this, '1-1')">1-1</div>
+        <div class="circle" onclick="selectRoutine(this, '1-2')">1-2</div>
+        <div class="circle" onclick="selectRoutine(this, '2-1')">2-1</div>
+        <div class="circle" onclick="selectRoutine(this, '2-2')">2-2</div>
+        <div class="circle" onclick="selectRoutine(this, '3-1')">3-1</div>
+        <div class="circle" onclick="selectRoutine(this, '3-2')">3-2</div>
+        <div class="circle" onclick="selectRoutine(this, '4-1')">4-1</div>
+        <div class="circle" onclick="selectRoutine(this, '4-2')">4-2</div>
+    </div>
 
-        <input type="hidden" name="selected_routine" id="selected-routine">
-        <input type="hidden" name="selected_section" id="selected-section">
+    <label>Select Section:</label>
+    <div id="sections">
+        <div class="circle" onclick="selectSection(this, 'A')">A</div>
+        <div class="circle" onclick="selectSection(this, 'B')">B</div>
+        <div class="circle" onclick="selectSection(this, 'C')">C</div>
+        <div class="circle" onclick="selectSection(this, 'D')">D</div>
+        <div class="circle" onclick="selectSection(this, 'E')">E</div>
+    </div>
 
-        <button type="submit">Filter</button>
-    </form>
+    <input type="hidden" name="selected_routine" id="selected-routine" value="{{ selected_routine }}">
+    <input type="hidden" name="selected_section" id="selected-section" value="{{ selected_section }}">
 
-   <div class="routine-display" id="routine-display">
-    <iframe id="routine-iframe" src="" frameborder="0" width="100%" height="500px" style="display: none;"></iframe>
-</div>
+    <button type="submit">Filter</button>
+</form>
 
-
+<!-- Display filtered routines -->
+<div class="routine-display" id="routine-display">
     {% if routines %}
-        <div class="routines">
-            {% for routine in routines %}
-                <div class="routine-card">
-                    <div class="routine-info">
-                        <strong>Year:</strong> {{ routine.get_year_display }},
-                        <strong>Semester:</strong> {{ routine.get_semester_display }}
-                        {% if routine.section %}
-                            , <strong>Section:</strong> {{ routine.get_section_display }}
-                        {% endif %}
-                    </div>
-                    <img src="{{ routine.image.url }}" alt="Routine Image">
-                    <a href="{{ routine.image.url }}" download class="download-btn">Download</a>
-                </div>
-            {% endfor %}
+        <!-- Only display the first filtered routine (assuming there is only one result per selection) -->
+        <div class="routine-card">
+            <div class="routine-info">
+                <strong>Year:</strong> {{ selected_routine|slice:":1" }},
+                <strong>Semester:</strong> {{ selected_routine|slice:"2:" }}
+                {% if selected_section %}
+                    , <strong>Section:</strong> {{ selected_section }}
+                {% endif %}
+            </div>
+            <img src="{{ routines.first.image.url }}" alt="Routine Image">
+            <a href="{{ routines.first.image.url }}" download class="download-btn">Download</a>
         </div>
     {% else %}
         <p style="text-align: center; margin-top:20px;">No routines found for the selected criteria.</p>
     {% endif %}
+</div>
 
-  <script>
+<script>
     let selectedRoutine = null;
     let selectedSection = null;
 
@@ -73,7 +70,6 @@
         element.classList.add("selected");
         selectedRoutine = routine;
         document.getElementById("selected-routine").value = routine;
-        updateRoutineDisplay();
     }
 
     function selectSection(element, section) {
@@ -81,43 +77,7 @@
         element.classList.add("selected");
         selectedSection = section;
         document.getElementById("selected-section").value = section;
-        updateRoutineDisplay();
-    }
-
-    function updateRoutineDisplay() {
-        const routineDisplay = document.getElementById("routine-display");
-        const routineIframe = document.getElementById("routine-iframe");
-
-        if (selectedRoutine && selectedSection) {
-            routineDisplay.innerHTML = `<p>Fetching routine for <strong>${selectedRoutine} - Section ${selectedSection}</strong>...</p>`;
-
-            // Convert Django routines data into JSON for JavaScript handling
-            const routinesData = JSON.parse(`{{ routines|escapejs }}`);
-
-            console.log("Routines Data:", routinesData); // Debugging
-
-            // Filter the matching routine based on selected criteria
-            const matchedRoutine = routinesData.find(routine =>
-                routine.year === selectedRoutine.split('-')[0] &&
-                routine.semester === selectedRoutine.split('-')[1] &&
-                routine.section === selectedSection
-            );
-
-            // Display routine dynamically within an iframe
-            if (matchedRoutine) {
-                routineIframe.src = matchedRoutine.image.url;
-                routineIframe.style.display = "block";
-                routineDisplay.innerHTML = ""; // Clear previous text
-            } else {
-                routineIframe.style.display = "none";
-                routineDisplay.innerHTML = `<p>No routines found for the selected criteria.</p>`;
-            }
-        } else {
-            routineIframe.style.display = "none";
-            routineDisplay.innerHTML = `Select a routine and section to view details.`;
-        }
     }
 </script>
-
 
 {% endblock %}
