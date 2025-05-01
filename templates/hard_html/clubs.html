@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Club | CSE{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/clubs.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="banner-global">
+  <h1 class="gradient-text-global">Explore All Clubs</h1>
+</div>
+    <div style="background-image: linear-gradient(135deg, #f3e8ff, #e6e6fa, #ede1ff, #f8f0ff);">
+        <p class="club-description">
+          Discover a variety of clubs, connect with like-minded individuals, and engage in exciting activities that match your interests!
+        </p>
+    </div>
+    <div class="custom-card-container">
+  {% if clubs %}
+    {% for club in clubs %}
+        <div class="custom-card">
+          <img src="{{ club.logo.url }}" alt="{{ club.name }} Logo" class="custom-card-logo">
+          <p class="custom-card-text">{{ club.name }}</p>
+            <a href="{% url 'club_detail' %}" class="custom-read-more">Learn More</a>
+        </div>
+    {% endfor %}
+  {% endif %}
+
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('show');
+  }
+
+</script>
+{% endblock %}
+</div>
