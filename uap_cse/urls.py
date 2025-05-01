@@ -30,6 +30,7 @@ urlpatterns = [
     path('clubs/', views.clubs, name='clubs'),
     path('gallery/', views.gallery, name='gallery'),
     path('aca/',include('academics.urls')),
+path('chatbot/', include('chatbot.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
