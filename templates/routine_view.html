@@ -65,18 +65,26 @@
     let selectedRoutine = null;
     let selectedSection = null;
 
+    // Function to select routine
     function selectRoutine(element, routine) {
         document.querySelectorAll("#routine-items .circle").forEach(c => c.classList.remove("selected"));
         element.classList.add("selected");
         selectedRoutine = routine;
         document.getElementById("selected-routine").value = routine;
+
+        // Debugging: Show the selected routine
+        console.log("Selected Routine:", routine);
     }
 
+    // Function to select section
     function selectSection(element, section) {
         document.querySelectorAll("#sections .circle").forEach(c => c.classList.remove("selected"));
         element.classList.add("selected");
         selectedSection = section;
         document.getElementById("selected-section").value = section;
+
+        // Debugging: Show the selected section
+        console.log("Selected Section:", section);
     }
 </script>
 

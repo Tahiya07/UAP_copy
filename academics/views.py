@@ -77,10 +77,14 @@ from .models import Routine
 from django.shortcuts import render
 from .models import Routine
 
+from .models import Routine
 
 def routine_view(request):
     selected_routine = request.GET.get('selected_routine')
     selected_section = request.GET.get('selected_section')
+
+    print(f"Selected Routine: {selected_routine}")
+    print(f"Selected Section: {selected_section}")
 
     # Filter the routines based on selected criteria
     routines = Routine.objects.all()
@@ -90,11 +94,14 @@ def routine_view(request):
     if selected_section:
         routines = routines.filter(section=selected_section)
 
+    print(f"Filtered routines count: {routines.count()}")  # To check how many records match
+
     return render(request, 'routine_view.html', {
         'routines': routines,
         'selected_routine': selected_routine,
         'selected_section': selected_section
     })
+
 # views.py
 from django.shortcuts import render
 from .models import ExamRoutine
