@@ -36,7 +36,7 @@ Admission with the approval of the Head of Dept.""",
         "official website": """Visit our Official Website: <a href="https://uap-bd.edu/index.php" target="_blank">Click Here</a>""",
     }
 
-    reply = responses.get(user_message, """Sorry, I didn't understand that.<br>Visit our Official Website: <a href="https://uap-bd.edu/index.php" target="_blank">Click Here</a><br> PABX:+8802-58157091-4, +8802-58157096</br><br> Ext: 107, 114 FAX:+8802-58157097</br><br> Email: registrar@uap-bd.edu""")
+    reply = responses.get(user_message, """SORRY, I didn't understand that.<br>Visit our Official Website: <a href="https://uap-bd.edu/index.php" target="_blank">Click Here</a><br> PABX:+8802-58157091-4, +8802-58157096</br><br> Ext: 107, 114 FAX:+8802-58157097</br><br> Email: registrar@uap-bd.edu""")
     return JsonResponse({"response": reply})
 from django.shortcuts import render
 
