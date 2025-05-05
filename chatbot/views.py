@@ -28,15 +28,32 @@ Admission with the approval of the Head of Dept.""",
         "tuition fees ": "Total Fee (4 Semester + Admission fee) = ৳ 1,87,000",
         "administration": "",
         "about university": """A government approved private university established by the University of Asia Pacific Foundation (UAPF). University of Asia Pacific (UAP) was established in 1996 as a private university under the..<a href="https://uap-bd.edu/uap-profile.php" target="_blank">Read more</a>""",
-        "more": "",
+        "more": "Click A Batton",
         "contact": "Contact address!",
         "uap administration": "<br>74/A , Green Road, Dhaka - 1205, Bangladesh</br><br> PABX:+8802-58157091-4, +8802-58157096</br><br> Ext: 107, 114 FAX:+8802-58157097</br><br> Email: registrar@uap-bd.edu, uapadmin@uap-bd.edu</br>",
         "admission office": "<br>Telephone: +8802-48114140 PABX: +8802-58157091-4, +8802-58157096 (Ext - 210, 211, 212, 213, 215)</br><br> FAX:+8802-58157097</br><br> Cell: +8801731681081, +8801768544208. +8801714088321 +8801789050383</br><br> Email: admission@uap-bd.edu</br>",
         "dept. cse": "<br>PABX:+8802-58157091-4, +8802-58157096 (Ext-777)</br><br> FAX:+8802-58157097</br><br> Email: headcse@uap-bd.edu</br>",
         "official website": """Visit our Official Website: <a href="https://uap-bd.edu/index.php" target="_blank">Click Here</a>""",
+        "events": """All Events: <a href="https://cse.uap-bd.edu/noticeboard/events/" target="_blank">Click Here</a>""",
+        "clubs": """
+All Club info:<br>
+<ul>
+  <li><a href="https://cse.uap-bd.edu/noticeboard/events/" target="_blank" rel="noopener noreferrer">General Events</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/Software%20&%20Hardware%20Club" target="_blank" rel="noopener noreferrer">Software & Hardware Club</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/Programming%20Contest%20Club" target="_blank" rel="noopener noreferrer">Programming Contest Club</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/Film%20&%20Photography%20Club" target="_blank" rel="noopener noreferrer">Film & Photography Club</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/Career%20Development%20Club" target="_blank" rel="noopener noreferrer">Career Development Club</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/CSE%20Cultural%20Club" target="_blank" rel="noopener noreferrer">CSE Cultural Club</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/Math%20Club" target="_blank" rel="noopener noreferrer">Math Club</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/Sports%20Club" target="_blank" rel="noopener noreferrer">Sports Club</a></li>
+  <li><a href="https://cse.uap-bd.edu/clubs/club/Cyber%20Security%20Club" target="_blank" rel="noopener noreferrer">Cyber Security Club</a></li>
+</ul>
+"""
+
+
     }
 
-    reply = responses.get(user_message, """SORRY, I didn't understand that.<br>Visit our Official Website: <a href="https://uap-bd.edu/index.php" target="_blank">Click Here</a><br> PABX:+8802-58157091-4, +8802-58157096</br><br> Ext: 107, 114 FAX:+8802-58157097</br><br> Email: registrar@uap-bd.edu""")
+    reply = responses.get(user_message, """Sorry, I didn't understand that.Visit our Official Website: <a href="https://uap-bd.edu/index.php" target="_blank">Click Here</a>""")
     return JsonResponse({"response": reply})
 from django.shortcuts import render
 
