@@ -4,6 +4,7 @@
 
 {% block head %}
     <title>Mission | CSE - UAP</title>
+<link rel="stylesheet" href="{% static 'css/global.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,8 +16,7 @@
 
         h1 {
             text-align: center;
-            color: #8B0000;  /* Dark red color for heading text */
-            background-color: #FFB6C1; /* Light pink background */
+            background-color: #bda9f8;
             font-size: 3em;  /* Larger font size */
             padding: 10px;  /* Add some padding around the text */
             border-radius: 5px;  /* Slightly round the corners */
@@ -39,7 +39,7 @@
         }
 
         .pdf-container a {
-            color: #21a9af;
+            color: #B39DDB;
             text-decoration: none;
         }
 
@@ -83,7 +83,10 @@
 
 
 {% block content %}
-    <h1>Mission</h1>
+
+<div class="banner-global">
+    <h1 class="gradient-text-global-big-size">Mission</h1>
+</div>
 
     {% if missions %}
         {% for mission in missions %}

@@ -4,6 +4,7 @@
 
 {% block head %}
     <title>Curriculum | CSE - UAP</title>
+<link rel="stylesheet" href="{% static 'css/global.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,8 +16,8 @@
 
         h1, h2, h3 {
             text-align: center;
-            color: #8B0000;  /* Dark red color for heading text */
-            background-color: #ADD8E6; /* Light blue background */
+            color: #8B0000;
+            background-color: #bda9f8;
             padding: 10px;  /* Add some padding around the text */
             border-radius: 5px;  /* Slightly round the corners */
         }
@@ -29,7 +30,7 @@
         h2 {
             margin-top: 30px;
             font-size: 1.8em;
-            border-bottom: 2px solid #21a9af;
+            border-bottom: 2px solid #3c1c3f;
             padding-bottom: 5px;
             color: #184e8e;
         }
@@ -37,7 +38,7 @@
         h3 {
             font-size: 1.2em;
             margin-bottom: 10px;
-            color: #007b5e;
+            color: #3c1c3f;
         }
 
         .pdf-container {
@@ -56,7 +57,7 @@
         }
 
         .pdf-container a {
-            color: #21a9af;
+            color: #3c1c3f;
             text-decoration: none;
         }
 
@@ -92,8 +93,9 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Curriculum</h1>
-
+<div class="banner-global">
+    <h1 class="gradient-text-global-big-size">Curriculum</h1>
+</div>
     {% if curriculums %}
         {% for curriculum in curriculums %}
             <div class="pdf-container">

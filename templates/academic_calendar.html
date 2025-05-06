@@ -4,23 +4,14 @@
 
 {% block head %}
     <title>Academic Calendar | CSE - UAP</title>
+ <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Lexend, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-            color: #333;
-        }
-
-        h1 {
-            text-align: center;
-            color: #8B0000;  /* Dark red color */
-            background-color: #FFB6C1; /* Light pink background */
-            font-size: 3em;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 50px;
+;
         }
 
         .pdf-container {
@@ -39,7 +30,7 @@
         }
 
         .pdf-container a {
-            color: #21a9af;
+            color: #3a1b2f;
             text-decoration: none;
         }
 
@@ -61,6 +52,7 @@
             color: #777;
         }
 
+
         @media (max-width: 768px) {
             embed {
                 height: 400px;
@@ -75,8 +67,9 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Academic Calendar</h1>
-
+<div class="banner-global">
+    <h1 class="gradient-text-global-big-size">Academic Calendar</h1>
+</div>
     {% if calendars %}
         {% for calendar in calendars %}
             <div class="pdf-container">

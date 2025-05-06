@@ -58,7 +58,7 @@ table {
   display: block;
   width: 8px;
   height: 8px;
-  background: var(--primary-color);
+  background:#bda9f8;
   border-radius: 50%;
   box-shadow: 0 0 8px #c084fc, 0 0 16px #d8b4fe;
   animation: drift 20s linear infinite;
@@ -114,7 +114,7 @@ td {
 
 tr:hover{
      /*background: linear-gradient(135deg, #f3e8ff, #e6e6fa, #ede1ff, #f8f0ff);*/
-    background: rgba(192, 191, 232, 0.95);
+    background: rgba(230, 220, 255, 0.95);
     /*box-shadow: 0 10px 30px var(--shadow-color);*/
     color: #3a1b2f;
 }
