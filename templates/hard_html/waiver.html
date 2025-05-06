@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waiver Information</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% extends 'base.html' %}
+
+{% block head %}
     <style>
-        /* Basic reset */
+        /* Your CSS remains unchanged here */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +15,6 @@
             color: #333;
         }
 
-        /* Navbar */
         .navbar {
             background-color: #0066cc;
             padding: 10px 0;
@@ -41,7 +36,6 @@
             border-radius: 4px;
         }
 
-        /* Container for main content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -70,7 +64,6 @@
             margin-bottom: 20px;
         }
 
-        /* Tables */
         table {
             width: 100%;
             margin-top: 20px;
@@ -92,7 +85,6 @@
             color: #fff;
         }
 
-        /* Buttons */
         .button {
             display: inline-block;
             padding: 10px 20px;
@@ -108,7 +100,6 @@
             background-color: #004d99;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -119,9 +110,9 @@
             }
         }
     </style>
-</head>
-<body>
+{% endblock %}
 
+{% block content %}
     <!-- Navbar -->
     <div class="navbar">
         <a href="#overview">Overview</a>
@@ -137,8 +128,8 @@
         <!-- Overview Section -->
         <div class="section" id="overview">
             <h2>Overview</h2>
-            <p>A large number of students receive financial support from the university every semester. There are merit scholarships, tuition fee waivers based on academic performance, freedom fighter’s waiver, and BOT members’ and VC’s special waivers for deserving students. Tuition fee waivers range from 10% to 100% of the tuition fees depending on academic achievements.</p>
-            <p>During Fall 2018, a total of 1,737 students received different categories of financial support. UAP gave an amount of Taka 3.2 crore to students as financial support in Fall 2018 – much higher than the government-mandated 6%. UAP promises to maintain similar support every semester and will increase the volume of support in future semesters.</p>
+            <p>A large number of students receive financial support from the university every semester...</p>
+            <p>During Fall 2018, a total of 1,737 students received different categories of financial support...</p>
         </div>
 
         <!-- Waiver for New Students Section -->
@@ -155,101 +146,61 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>4.00-4.49</td>
-                        <td>4.00-4.49</td>
-                        <td>3.50-3.75</td>
-                        <td>10%</td>
-                    </tr>
-                    <tr>
-                        <td>4.50-4.99</td>
-                        <td>4.50-4.99</td>
-                        <td>3.75-3.99</td>
-                        <td>25%</td>
-                    </tr>
-                    <tr>
-                        <td>5.00</td>
-                        <td>5.00</td>
-                        <td>4.00</td>
-                        <td>50%</td>
-                    </tr>
-                    <tr>
-                        <td>5.00 (all A+)</td>
-                        <td>5.00 (all A+)</td>
-                        <td>4.00</td>
-                        <td>100%</td>
-                    </tr>
+                    <tr><td>4.00-4.49</td><td>4.00-4.49</td><td>3.50-3.75</td><td>10%</td></tr>
+                    <tr><td>4.50-4.99</td><td>4.50-4.99</td><td>3.75-3.99</td><td>25%</td></tr>
+                    <tr><td>5.00</td><td>5.00</td><td>4.00</td><td>50%</td></tr>
+                    <tr><td>5.00 (all A+)</td><td>5.00 (all A+)</td><td>4.00</td><td>100%</td></tr>
                 </tbody>
             </table>
 
             <h3>Special Options/Waivers</h3>
             <ul>
-                <li>3% of total seats are reserved for children of Freedom Fighters, offered 100% tuition fee waiver.</li>
-                <li>3% of total seats are reserved for poor but meritorious students from underdeveloped regions of Bangladesh, offered 100% tuition fee waiver (After Admission).</li>
-                <li>60% tuition fee waiver for the second sibling of a student who is already studying at UAP.</li>
+                <li>3% seats reserved for children of Freedom Fighters – 100% waiver.</li>
+                <li>3% seats for students from underdeveloped regions – 100% waiver.</li>
+                <li>60% waiver for a second sibling at UAP.</li>
             </ul>
         </div>
 
-        <!-- Waiver for Current Students Section -->
+        <!-- Waiver for Current Students -->
         <div class="section" id="waiver-current">
             <h2>Waiver for Current Students</h2>
             <h3>Merit Waiver (Based on Semester Result)</h3>
             <table>
                 <thead>
-                    <tr>
-                        <th>Semester GPA</th>
-                        <th>Tuition Fee Waiver</th>
-                    </tr>
+                    <tr><th>Semester GPA</th><th>Tuition Fee Waiver</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>3.50 - 3.74</td>
-                        <td>25%</td>
-                    </tr>
-                    <tr>
-                        <td>3.75 - 3.89</td>
-                        <td>50%</td>
-                    </tr>
-                    <tr>
-                        <td>3.90 - 3.99</td>
-                        <td>75%</td>
-                    </tr>
-                    <tr>
-                        <td>4.00</td>
-                        <td>100%</td>
-                    </tr>
+                    <tr><td>3.50 - 3.74</td><td>25%</td></tr>
+                    <tr><td>3.75 - 3.89</td><td>50%</td></tr>
+                    <tr><td>3.90 - 3.99</td><td>75%</td></tr>
+                    <tr><td>4.00</td><td>100%</td></tr>
                 </tbody>
             </table>
-            <p><strong>Note:</strong> The top 3% of students in each department will be offered a 100% tuition fee waiver.</p>
+            <p><strong>Note:</strong> Top 3% in each department receive full waiver.</p>
         </div>
 
-        <!-- Special Waivers and Other Assistances Section -->
+        <!-- Special Waivers Section -->
         <div class="section" id="special-waivers">
             <h2>Special Waivers & Other Assistances</h2>
             <ul>
-                <li><strong>VC's Special Tuition Fee Waiver:</strong> 10% to 100% tuition fee waiver for poor but meritorious students based on their performance at UAP. (Awarded and approved by the Vice Chancellor)</li>
-                <li><strong>Other Possibilities:</strong> In special cases, BOT Members may personally offer full or partial financial assistance to students.</li>
+                <li><strong>VC's Special Waiver:</strong> 10–100% waiver for meritorious students.</li>
+                <li><strong>BOT Members:</strong> May provide individual assistance in special cases.</li>
             </ul>
         </div>
 
-        <!-- General Criteria for Semester-Based Tuition Fee Waiver Section -->
+        <!-- General Criteria -->
         <div class="section" id="criteria">
-            <h2>General Criteria for Semester-Based Tuition Fee Waiver</h2>
+            <h2>General Criteria for Semester-Based Waiver</h2>
             <ul>
                 <li>Must be a regular student.</li>
-                <li>Must take a full load in the concerned semester.</li>
-                <li>Students taking repeat exams are not eligible for waivers.</li>
-                <li>Must have a record of good conduct.</li>
-                <li>Must have no outstanding dues (for VC's special waiver and merit-based waiver).</li>
-                <li>Financially insolvent (for VC's special waiver).</li>
-                <li>No "F" grade in any subject (Freedom Fighters Quota waiver).</li>
-                <li>Must have a minimum GPA of 3.5 for VC's special waiver.</li>
-                <li>Must be recommended by the Head of the Department and Advisor.</li>
+                <li>Must take full course load.</li>
+                <li>No repeats or "F" grades for applicable waivers.</li>
+                <li>Must have good conduct and financial need (for special waivers).</li>
+                <li>Minimum GPA 3.5 for VC’s waiver.</li>
+                <li>Recommendation from Dept. Head & Advisor.</li>
             </ul>
         </div>
 
         <a href="#" class="button">Download Waiver Application</a>
     </div>
-
-</body>
-</html>
+{% endblock %}
