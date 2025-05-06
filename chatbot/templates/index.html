@@ -6,11 +6,11 @@
   <title>University Help Desk</title>
   <style>
     :root {
-      --bg: #e5ddd5;
-      --text: #000000;
-      --bot-bg: #ffffff;
-      --user-bg: #dcf8c6;
-      --header-bg: #075e54;
+      --bg: #f7f9fc;
+      --text: #222;
+      --bot-bg: #e8f0fe;
+      --user-bg: #d1e7dd;
+      --header-bg: #003366;
       --button-bg: #ffffff;
       --button-hover: #e1e1e1;
     }
@@ -18,97 +18,78 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f4f4f4;
+      background: var(--bg);
     }
 
     .chatbot-popup {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50%;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 360px;
       max-height: 80vh;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       background: var(--bg);
       display: flex;
       flex-direction: column;
       z-index: 9999;
       border: 1px solid #ccc;
-      font-size: 18px; /* Increased font size */
     }
 
     .chat-header {
       background: var(--header-bg);
       color: white;
-      padding: 12px;
+      padding: 14px;
+      font-size: 16px;
       text-align: center;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 18px; /* Increased font size */
-    }
-
-    .chat-header img {
-      width: 24px;
-      height: 24px;
     }
 
     .chat-messages {
       flex: 1;
       overflow-y: auto;
-      padding: 10px;
-      background: var(--bg);
+      padding: 12px;
       display: flex;
       flex-direction: column;
-      font-size: 18px; /* Increased font size */
+      gap: 8px;
     }
 
     .msg {
-      margin: 6px 0;
       padding: 10px 14px;
-      border-radius: 8px;
+      border-radius: 10px;
       max-width: 80%;
-      line-height: 1.4;
-      word-wrap: break-word;
-      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-      font-size: 18px; /* Increased font size */
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .bot {
-      background: var(--bot-bg);
+      background-color: var(--bot-bg);
       align-self: flex-start;
     }
 
     .user {
-      background: var(--user-bg);
+      background-color: var(--user-bg);
       align-self: flex-end;
     }
 
     .question-buttons {
       padding: 10px;
-      border-top: 1px solid #ddd;
       background: var(--bg);
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      border-top: 1px solid #ddd;
     }
 
     .question-buttons button {
       background: var(--button-bg);
       color: var(--text);
-      padding: 6px 12px;
-      border: none;
+      padding: 8px 14px;
+      border: 1px solid #ccc;
       border-radius: 20px;
       cursor: pointer;
+      font-size: 13px;
       transition: 0.2s;
-      font-size: 16px; /* Increased button font size */
     }
 
     .question-buttons button:hover {
@@ -126,7 +107,7 @@
       padding: 10px;
       border: none;
       outline: none;
-      font-size: 16px; /* Increased input font size */
+      font-size: 14px;
     }
 
     .input-box button {
@@ -135,7 +116,6 @@
       background: var(--header-bg);
       color: white;
       cursor: pointer;
-      font-size: 16px; /* Increased button font size */
     }
 
     .chat-toggle-btn {
@@ -151,7 +131,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .chat-toggle-btn img {
@@ -163,21 +142,16 @@
 </head>
 <body>
 
-<!-- Chatbot Toggle Button -->
+<!-- Chat Toggle Button -->
 <div class="chat-toggle-btn" onclick="toggleChat()">
-  <img src="https://cdn-icons-png.flaticon.com/512/2462/2462719.png" alt="Chatbot Icon" />
+  <img src="https://cdn-icons-png.flaticon.com/512/2462/2462719.png" alt="Chat Icon" />
 </div>
 
 <!-- Chatbot Popup -->
 <div class="chatbot-popup" id="chatbot">
-  <div class="chat-header">
-    <img src="https://cdn-icons-png.flaticon.com/512/2462/2462719.png" alt="bot" />
-    University Help Desk
-  </div>
+  <div class="chat-header">University Help Desk</div>
   <div class="chat-messages" id="messages"></div>
   <div class="question-buttons" id="buttonContainer"></div>
-
-  <!-- ✅ User Input Box restored -->
   <div class="input-box">
     <input type="text" id="userInput" placeholder="Type a message..." />
     <button onclick="sendMessage()">Send</button>
@@ -212,7 +186,7 @@
     const typingDiv = document.createElement('div');
     typingDiv.className = 'msg bot';
     typingDiv.id = 'typing';
-    typingDiv.innerHTML = `Bot is typing<span class="typing"><span></span><span></span><span></span></span>`;
+    typingDiv.innerHTML = `Bot is typing...`;
     document.getElementById('messages').appendChild(typingDiv);
     scrollToBottom();
 
@@ -228,7 +202,6 @@
   function showOnlyHiButton() {
     const container = document.getElementById("buttonContainer");
     container.innerHTML = '';
-
     const btn = document.createElement("button");
     btn.textContent = "Hi / Hello";
     btn.onclick = () => ask("hi");
@@ -244,7 +217,7 @@
       'admission portal': ['Admission Info'],
       'admission info': ['Undergraduate', 'Graduate'],
       'undergraduate': ['Tuition Fees'],
-      'graduate': ['Tuition Fees'],
+      'graduate': ['Tuition Fees '],
       'student portal': [],
       'administration': [],
       'about university': ['Official Website'],
@@ -261,7 +234,7 @@
       container.appendChild(btn);
     });
 
-    // 🏠 Home button
+    // Home button
     const homeBtn = document.createElement("button");
     homeBtn.textContent = "🏠 Home";
     homeBtn.onclick = () => {
@@ -271,7 +244,7 @@
     };
     container.appendChild(homeBtn);
 
-    // ⬅️ Back button
+    // Back button
     if (questionHistory.length > 1) {
       const backBtn = document.createElement("button");
       backBtn.textContent = "⬅️ Back";
@@ -302,7 +275,7 @@
   }
 
   window.onload = () => {
-    document.getElementById("chatbot").style.display = "none"; // hide by default
+    document.getElementById("chatbot").style.display = "none";
     showOnlyHiButton();
   }
 </script>
