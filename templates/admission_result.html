@@ -4,10 +4,11 @@
 
 {% block head %}
     <title>Admission Results | CSE - UAP</title>
+<link rel="stylesheet" href="{% static 'css/global.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: rgb(142, 109, 128) 6.9%;
+
             margin: 0;
             padding: 0;
             color: #333;
@@ -15,8 +16,7 @@
 
         h1, h2, h3 {
             text-align: center;
-            color: #8B0000;  /* Dark red color for heading text */
-            background-color: #ADD8E6; /* Light blue background */
+            background: #ede1ff;
             padding: 10px;  /* Add some padding around the text */
             border-radius: 5px;  /* Slightly round the corners */
         }
@@ -29,15 +29,15 @@
         h2 {
             margin-top: 30px;
             font-size: 1.8em;
-            border-bottom: 2px solid #21a9af;
+            border-bottom: 2px solid #bda9f8;
             padding-bottom: 5px;
-            color: #184e8e;
+            color: #B39DDB;
         }
 
         h3 {
             font-size: 1.2em;
             margin-bottom: 10px;
-            color: #007b5e;
+            color: #5A3E90;
         }
 
         .pdf-container {
@@ -52,11 +52,11 @@
 
         .pdf-container p {
             font-size: 1em;
-            color: rgb(142, 109, 128) 6.9%;
+            color: #B39DDB;
         }
 
         .pdf-container a {
-            color: rgb(142, 109, 128) 6.9%;
+            color: #bda9f8;
             text-decoration: none;
         }
 
@@ -98,8 +98,9 @@
 <!-- IT WORKS I DON'T KNOW HOW -->
 
 {% block content %}
-    <h1>Admission Results</h1>
-
+<div class="banner-global">
+    <h1 class="gradient-text-global-big-size">Admission Results</h1>
+</div>
     <h2>Written Test Results</h2>
     {% if written_results %}
         {% for pdf in written_results %}

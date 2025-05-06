@@ -1,21 +1,12 @@
 <!-- notice_board.html -->
 {% extends 'base.html' %}
-{% block title %}Notice Board{% endblock %}
-
-{% block content %}
-    <h1>Notice Board</h1>
-    <div class="notice-list">
-        {% for notice in notices %}
-            <div class="notice-card">
-                <img src="{{ notice.image.url }}" alt="{{ notice.title }}" class="notice-image">
-                <h3><a href="{% url 'notice_detail' notice.id %}">{{ notice.title }}</a></h3>
-                <p>Published on: {{ notice.publish_date }}</p>
-            </div>
-        {% endfor %}
-    </div>
-{% endblock %}
+{% load static %}
 
 {% block head %}
+    <title>Notice Board | CSE - UAP</title>
+<link rel="stylesheet" href="{% static 'css/global.css' %}">
+
+
     <style>
         h1 {
             text-align: center;
@@ -80,11 +71,11 @@
         /* Link styling */
         .notice-card a {
             text-decoration: none;
-            color: #007b5e;
+            color: #bda9f8;
         }
 
         .notice-card a:hover {
-            color: #21a9af;
+            color: #5A3E90;
         }
 
         /* Make the layout responsive */
@@ -101,3 +92,18 @@
         }
     </style>
 {% endblock %}
+{% block content %}
+<div class="banner-global">
+    <h1 class="gradient-text-global-big-size">Notice Board</h1>
+    </div>
+    <div class="notice-list">
+        {% for notice in notices %}
+            <div class="notice-card">
+                <img src="{{ notice.image.url }}" alt="{{ notice.title }}" class="notice-image">
+                <h3><a href="{% url 'notice_detail' notice.id %}">{{ notice.title }}</a></h3>
+                <p>Published on: {{ notice.publish_date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
